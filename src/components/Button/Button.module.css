@@ -1,0 +1,28 @@
+.buttonBase {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  .buttonBase:hover {
+    border-color: var(--color-elem-common);
+  }
+  .buttonBase:focus,
+  .buttonBase:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+  .button--small {
+    font-size: 12px;
+    padding: calc(var(--size) * 2.5) calc(var(--size) * 4);
+  }
+  .button--medium {
+    font-size: 14px;
+    padding: calc(var(--size) * 2.75) calc(var(--size) * 5);
+  }
+  .button--large {
+    font-size: 16px;
+    padding: calc(var(--size) * 3) calc(var(--size) * 6);
+  }
