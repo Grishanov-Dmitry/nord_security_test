@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import classNames from "classnames";
 
 import { Button } from "../Button";
@@ -8,26 +10,39 @@ import styles from "./SignInForm.module.css";
 
 const loginCombinedClasses = classNames(styles.signInInput, styles.loginInput);
 
-export const SignInForm = () => (
-  <Form className={styles.signInForm}>
-    <Input
-      value=""
-      placeholder="Enter a login"
-      className={loginCombinedClasses}
-      onChange={() => {}}
-    />
-    <Input
-      className={styles.signInInput}
-      value=""
-      placeholder="Enter a password"
-      onChange={() => {}}
-    />
+export const SignInForm = () => {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
-    <Button
-      type="submit"
-      label="LogIn"
-      className={styles.submitButton}
-      onClick={() => {}}
-    />
-  </Form>
-);
+  const changeLogin = (loginValue: string) => {
+    setLogin(loginValue);
+  };
+  const changePassword = (passwordValue: string) => {
+    setPassword(passwordValue);
+  };
+
+  return (
+    <Form className={styles.signInForm}>
+      <Input
+        value={login}
+        placeholder="Enter a login"
+        className={loginCombinedClasses}
+        onChange={changeLogin}
+      />
+      <Input
+        value={password}
+        type="password"
+        placeholder="Enter a password"
+        className={styles.signInInput}
+        onChange={changePassword}
+      />
+
+      <Button
+        type="submit"
+        label="LogIn"
+        className={styles.submitButton}
+        onClick={() => {}}
+      />
+    </Form>
+  );
+};
