@@ -5,6 +5,7 @@ import styles from "./Input.module.css";
 
 interface IInput {
   value: string;
+  type?: React.HTMLInputTypeAttribute;
   placeholder?: string;
   className?: string;
   onChange: (value: string) => void;
@@ -12,6 +13,7 @@ interface IInput {
 
 export const Input = ({
   value,
+  type,
   placeholder = "",
   className = "",
   onChange,
@@ -23,9 +25,10 @@ export const Input = ({
 
   return (
     <input
-      className={combinedClasses}
       value={value}
+      type={type}
       placeholder={placeholder}
+      className={combinedClasses}
       onChange={onChangeValue}
     />
   );
