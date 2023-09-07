@@ -1,4 +1,4 @@
-.input {
+.inputBase {
     width: 100%;
     padding: calc(var(--size) * 3) calc(var(--size) * 5);
     border-radius: 10px;

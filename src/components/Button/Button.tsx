@@ -11,7 +11,10 @@ const sizeClassNameHelper = (size: keyof typeof ButtonSizes) => {
   return `${styles[className]}`;
 };
 
+type ButtonType = "button" | "submit" | "reset" | undefined;
+
 interface IButton {
+  type?: ButtonType;
   label: string;
   size?: ButtonSizes;
   className?: string;
@@ -19,19 +22,20 @@ interface IButton {
 }
 
 export const Button = ({
+  type = "button",
   label,
   size = ButtonSizes.medium,
-  className,
+  className = "",
   onClick,
 }: IButton): ReactElement<HTMLButtonElement> => {
   const combinedClasses = classnames(
     styles.buttonBase,
-    className && styles[className],
+    className,
     sizeClassNameHelper(size)
   );
 
   return (
-    <button className={combinedClasses} onClick={onClick}>
+    <button type={type} className={combinedClasses} onClick={onClick}>
       {label}
     </button>
   );
