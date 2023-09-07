@@ -4,3 +4,7 @@ export enum ButtonSizes {
     medium = 'medium',
     large = 'large'
 }
+
+export interface IServer {
+    id: string
+}
