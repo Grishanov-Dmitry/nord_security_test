@@ -1,0 +1,12 @@
+.signInForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.submitButton {
+    background: var(--color-elem-bg-2);
+}
+.signInInput {
+    background: var(--color-elem-bg);
+    margin-bottom: calc(var(--size) * 7);
+}

@@ -1,0 +1,9 @@
+.signInPageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signInPageHeader {
+    font-size: 4em;
+}
