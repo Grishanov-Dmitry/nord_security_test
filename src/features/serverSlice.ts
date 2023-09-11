@@ -1,12 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { IServer } from '../types';
+import { fetchToken } from './actions';
 
 interface ServerState {
-  servers: IServer[]
+  servers: IServer[];
+  token: string | null;
 }
 
 const initialState: ServerState = {
-  servers: []
+  servers: [],
+  token: null,
 }
 
 export const serverSlice = createSlice({
@@ -16,6 +20,11 @@ export const serverSlice = createSlice({
     saveServers: (state, action: PayloadAction<IServer[]>) => {
       state.servers = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchToken.fulfilled, (state, action) => {
+      state.token = action.payload.token;
+    })
   },
 })
 

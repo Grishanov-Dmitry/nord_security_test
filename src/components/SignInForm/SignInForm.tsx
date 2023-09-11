@@ -7,6 +7,8 @@ import { Form } from "../Form";
 import { Input } from "../Input";
 
 import styles from "./SignInForm.module.css";
+import { useAppDispatch } from "../../../hooks";
+import { fetchToken } from "../../features/actions";
 
 const loginCombinedClasses = classNames(styles.signInInput, styles.loginInput);
 
@@ -19,6 +21,12 @@ export const SignInForm = () => {
   };
   const changePassword = (passwordValue: string) => {
     setPassword(passwordValue);
+  };
+
+  const dispatch = useAppDispatch();
+
+  const loginUser = () => {
+    dispatch(fetchToken({ username: login, password }));
   };
 
   return (
@@ -41,7 +49,7 @@ export const SignInForm = () => {
         type="submit"
         label="LogIn"
         className={styles.submitButton}
-        onClick={() => {}}
+        onClick={loginUser}
       />
     </Form>
   );
