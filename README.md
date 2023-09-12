@@ -1,3 +1,16 @@
+The list with my suggestions:
+
+1. Add animations for actions (click, login, logout etc.)
+2. Login with Social networks
+3. Add different themes ( dark and light for instance)
+4. Multi-language pages.
+5. Technical moments:
+   Add create Api from RTK.
+   Add more tests. Also integrated tests
+   Work with a designer to add more beautiful colors and paddings.
+
+##############################################################################
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
