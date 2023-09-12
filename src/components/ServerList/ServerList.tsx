@@ -18,7 +18,7 @@ export const ServerList = () => {
   }, []);
 
   if (!servers) {
-    return <div>Servers are loading</div>;
+    return <div className={styles.popup}>Servers are loading</div>;
   }
 
   return (

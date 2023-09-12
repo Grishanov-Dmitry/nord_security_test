@@ -9,3 +9,9 @@
     padding: calc(var(--size) * 5);
     overflow: auto;
 }
+.popup {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
