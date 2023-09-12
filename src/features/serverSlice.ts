@@ -4,12 +4,12 @@ import { IServer } from '../types';
 import { fetchToken } from './actions';
 
 interface ServerState {
-  servers: IServer[];
+  serverList: IServer[] | null;
   token: string | null;
 }
 
 const initialState: ServerState = {
-  servers: [],
+  serverList: null,
   token: null,
 }
 
@@ -18,7 +18,7 @@ export const serverSlice = createSlice({
   initialState,
   reducers: {
     saveServers: (state, action: PayloadAction<IServer[]>) => {
-      state.servers = action.payload;
+      state.serverList = action.payload;
     },
   },
   extraReducers: (builder) => {

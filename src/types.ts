@@ -6,5 +6,6 @@ export enum ButtonSizes {
 }
 
 export interface IServer {
-    id: string
+    name: string
+    distance: string
 }

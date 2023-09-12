@@ -1,0 +1,4 @@
+.serverListContainer {
+    height: 50vh;
+    overflow: auto;
+}

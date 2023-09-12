@@ -1,14 +1,17 @@
-import { useState } from "react";
-
-import classNames from "classnames";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { Button } from "../Button";
 import { Form } from "../Form";
 import { Input } from "../Input";
-
-import styles from "./SignInForm.module.css";
 import { useAppDispatch } from "../../../hooks";
 import { fetchToken } from "../../features/actions";
+
+import { getToken } from "../../features/serverSelectors";
+
+import styles from "./SignInForm.module.css";
+import classNames from "classnames";
 
 const loginCombinedClasses = classNames(styles.signInInput, styles.loginInput);
 
@@ -24,6 +27,15 @@ export const SignInForm = () => {
   };
 
   const dispatch = useAppDispatch();
+
+  const token = useSelector(getToken);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token !== null) {
+      navigate("/main");
+    }
+  }, [token, navigate]);
 
   const loginUser = () => {
     dispatch(fetchToken({ username: login, password }));
