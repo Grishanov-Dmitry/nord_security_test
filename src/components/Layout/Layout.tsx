@@ -6,7 +6,7 @@ import { Footer } from "../Footer";
 
 import styles from "./Layout.module.css";
 import { useSelector } from "react-redux";
-import { getToken } from "../../features/serverSelectors";
+import { getToken } from "../../features/loginSelectors";
 
 interface ILayout {
   children: ReactNode;

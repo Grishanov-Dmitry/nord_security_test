@@ -7,8 +7,7 @@ import { Form } from "../Form";
 import { Input } from "../Input";
 import { useAppDispatch } from "../../../hooks";
 import { fetchToken } from "../../features/actions";
-
-import { getToken } from "../../features/serverSelectors";
+import { getToken } from "../../features/loginSelectors";
 
 import styles from "./SignInForm.module.css";
 import classNames from "classnames";

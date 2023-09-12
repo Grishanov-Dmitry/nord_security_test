@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import serversReducer from './src/features/serverSlice';
+import loginReducer from './src/features/loginSlice';
 
 export const store = configureStore({
   reducer: {
-    servers: serversReducer
+    servers: serversReducer,
+    login: loginReducer
   }
 })
 

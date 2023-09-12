@@ -1,3 +1,4 @@
 import { RootState } from "../../store";
 
-export const setServers = (state: RootState) => state.servers;
+const getServers = (state: RootState) => state.servers;
+export const getServerList = (state: RootState) => getServers(state).serverList;
