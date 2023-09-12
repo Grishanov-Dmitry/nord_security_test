@@ -1,40 +1,47 @@
 import axios, { AxiosResponse } from 'axios';
-import { logger } from './logger';
+import { baseUrl } from '../config';
 import { IServer } from './types';
 
-const BASE_URL = process.env.SERVER_BASE_URL;
-
 const tokenApi = axios.create({
-  baseURL: BASE_URL,
+  baseURL: baseUrl
 });
 
-export const fetchToken = async (): Promise<IServer[]> => {
+export const fetchTokenApi = async (body: { username: string; password: string }): Promise<ITokenResponse> => {
   try {
-    logger.info('The token request is sent');
-
-    const response: AxiosResponse<IServer[]> = await tokenApi.get('/tokens');
-
+    console.log('The token request is sent');
+    
+    const headers = {
+        "Content-Type": "application/json",
+      };
+    
+    const response: AxiosResponse<ITokenResponse> =
+         await tokenApi.post('/tokens', body, { headers });
+    
     return response.data;
-  } catch (error) {
-    logger.error('An error in getting a token');
+} catch (error) {
+      console.log('An error in getting a token');
 
     throw error;
   }
 };
 
-interface ITokenResponse {
+export interface ITokenResponse {
     token: string;
 }
 
-export const fetchServerList = async (): Promise<ITokenResponse> => {
+export const fetchServerListApi = async (token: string): Promise<IServer[]> => {
   try {
-    logger.info('The server list request is sent');
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token
+    };
+    console.log('The server list request is sent');
 
-    const response: AxiosResponse<ITokenResponse> = await tokenApi.get('/servers');
+    const response: AxiosResponse<IServer[]> = await tokenApi.get('/servers', { headers });
 
     return response.data;
   } catch (error) {
-    logger.error('An error in getting the server list');
+    console.log('An error in getting the server list');
 
     throw error;
   }

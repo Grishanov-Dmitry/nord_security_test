@@ -1,45 +1,19 @@
 import { AsyncThunk, createAsyncThunk } from "@reduxjs/toolkit";
 
-import { ITokenResponse } from "../api";
-import { baseUrl } from "../../config";
 import { RootState } from "../../store";
 import { saveServers } from "./serverSlice";
 import { getToken } from "./loginSelectors";
+import { ITokenResponse } from "../types";
+import { fetchServerListApi, fetchTokenApi } from "../api";
 
-// TODO Need to move the logic of request to an api file
 export const fetchToken: AsyncThunk<
   ITokenResponse,
   { username: string; password: string },
   Record<string, string>
 > = createAsyncThunk("servers/getToken", async (credentials) => {
-  try {
-    const headers = {
-      "Content-Type": "application/json",
-    };
+    const data = await fetchTokenApi(credentials);
 
-    const body = JSON.stringify(credentials);
-
-    try {
-      const response = await fetch(`${baseUrl}tokens`, {
-        method: "POST",
-        headers,
-        body,
-      });
-
-      if (response.status === 200) {
-        const data = await response.json();
-
-        return data;
-      } else {
-        console.error("Error:", response.status);
-      }
-    } catch (error) {
-      console.error("Request failed:", error);
-    }
-  } catch (error) {
-    console.error("Error fetching token:", error);
-    throw error;
-  }
+    return data;
 });
 
 export const fetchServerList = createAsyncThunk("servers/fetchServerList", async (_, { getState, dispatch }) => {
@@ -50,30 +24,7 @@ export const fetchServerList = createAsyncThunk("servers/fetchServerList", async
 
     return;
   }
-  
-  try {
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: token
-    };
+  const data = await fetchServerListApi(token);
 
-    try {
-      const response = await fetch(`${baseUrl}servers`, {
-        headers
-      });
-
-      if (response.status === 200) {
-        const data = await response.json();
-
-        dispatch(saveServers(data));
-      } else {
-        console.error("Error:", response.status);
-      }
-    } catch (error) {
-      console.error("Request failed:", error);
-    }
-  } catch (error) {
-    console.error("Error fetching token:", error);
-    throw error;
-  }
+  dispatch(saveServers(data));
 });

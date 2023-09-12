@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { fetchToken } from './actions';
-import { ITokenResponse } from '../api';
+import { ITokenResponse } from '../types';
 
 interface LoginState {
   token: string | null;

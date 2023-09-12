@@ -9,3 +9,7 @@ export interface IServer {
     name: string
     distance: string
 }
+
+export interface ITokenResponse {
+    token: string;
+}
