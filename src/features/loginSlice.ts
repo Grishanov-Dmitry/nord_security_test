@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { fetchToken } from './actions';
+import { ITokenResponse } from '../api';
 
 interface LoginState {
   token: string | null;
@@ -17,6 +18,9 @@ export const loginSlice = createSlice({
     logoutUser: (state) => {
       state.token = null;
     },
+    saveToken: (state, action: PayloadAction<ITokenResponse>) => {
+      state.token = action.payload.token;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchToken.fulfilled, (state, action) => {
@@ -25,6 +29,6 @@ export const loginSlice = createSlice({
   },
 })
 
-export const { logoutUser } = loginSlice.actions;
+export const { logoutUser, saveToken } = loginSlice.actions;
 
 export default loginSlice.reducer;
