@@ -6,7 +6,7 @@ import loginReducer from './src/features/loginSlice';
 export const store = configureStore({
   reducer: {
     servers: serversReducer,
-    login: loginReducer
+    login: loginReducer,
   }
 })
 

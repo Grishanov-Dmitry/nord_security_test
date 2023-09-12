@@ -10,6 +10,8 @@ export const fetchTokenApi = async (body: { username: string; password: string }
   try {
     console.log('The token request is sent');
     
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
     const headers = {
         "Content-Type": "application/json",
       };
@@ -35,7 +37,9 @@ export const fetchServerListApi = async (token: string): Promise<IServer[]> => {
       "Content-Type": "application/json",
       Authorization: token
     };
+    
     console.log('The server list request is sent');
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     const response: AxiosResponse<IServer[]> = await tokenApi.get('/servers', { headers });
 
