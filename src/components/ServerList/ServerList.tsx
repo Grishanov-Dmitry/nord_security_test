@@ -22,8 +22,8 @@ export const ServerList = () => {
   }
 
   return (
-    <div>
-      <h2>The list of available servers is</h2>
+    <div className={styles.container}>
+      <h2>The list of available servers</h2>
 
       <div className={styles.serverListContainer}>
         {servers.map(({ name, distance }) => (

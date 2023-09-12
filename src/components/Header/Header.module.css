@@ -1,0 +1,9 @@
+header {
+    display: flex;
+    background: var(--color-elem-bg);
+    padding: calc(var(--size) * 2);
+}
+.logOutButton {
+    margin-left: auto;
+    background: var(--color-elem-bg-2);
+}

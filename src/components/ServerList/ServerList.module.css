@@ -1,4 +1,11 @@
+.container {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: calc(var(--size) * 3);
+}
 .serverListContainer {
-    height: 50vh;
+    padding: calc(var(--size) * 5);
     overflow: auto;
 }

@@ -1,0 +1,7 @@
+footer {
+    background: var(--color-elem-bg);
+    color: var(--color-font-light);
+    display: flex;
+    justify-content: space-around;
+    padding: calc(var(--size) * 3);
+}
