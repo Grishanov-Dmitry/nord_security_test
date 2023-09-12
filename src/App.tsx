@@ -7,6 +7,7 @@ import { ServerList } from "./components/ServerList";
 
 import { SignInPage } from "./views/SignInPage";
 import { Layout } from "./components/Layout";
+import { AboutUsPage } from "./views/AboutUsPage";
 
 export const App = () => (
   <Provider store={store}>
@@ -21,6 +22,7 @@ export const App = () => (
                 <Routes>
                   <Route path="main" element={<HomePage />} />
                   <Route path="servers" element={<ServerList />} />
+                  <Route path="about" element={<AboutUsPage />} />
                 </Routes>
               </Layout>
             }

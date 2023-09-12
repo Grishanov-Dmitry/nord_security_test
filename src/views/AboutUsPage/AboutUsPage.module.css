@@ -1,11 +1,8 @@
-.mainContainer {
+.aboutUsPageContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-}
-.mainHeader {
-    font-size: 1.8em;
-    text-align: center;
+    padding: calc(var(--size) * 4);
 }

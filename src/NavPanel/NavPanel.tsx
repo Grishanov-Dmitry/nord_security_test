@@ -6,6 +6,5 @@ export const NavPanel = () => (
   <nav className={styles.navContainer}>
     <NavLink to="/servers">Server List</NavLink>
     <NavLink to="/about">About Us</NavLink>
-    <a href="">Log Out</a>
   </nav>
 );
